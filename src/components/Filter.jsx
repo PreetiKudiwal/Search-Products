@@ -19,6 +19,21 @@ export default function Filter({slug, rating, setRating, price, setPrice}) {
         )
     }
 
+    const minPrice = (event) => {
+        const startingPrice = event.target.value;
+        if (startingPrice > 0) {
+            setPrice({...price, from: event.target.value})
+        }
+    }
+
+    const maxPrice = (event) => {
+        const endingPrice = event.target.value;
+        if (endingPrice > 0) {
+            setPrice({...price, to: event.target.value})
+        }
+    }
+
+
     useEffect(
         () => {
             getCategories();
@@ -46,9 +61,9 @@ export default function Filter({slug, rating, setRating, price, setPrice}) {
     <div className='m-3'>
     <h1  className='text-gray-950 font-bold text-xl cursor-pointer'>Filter by Price</h1>
     <div className='flex justify-between items-center mt-5 '>
-        <input onChange={(event) => setPrice({...price, from: event.target.value})} className='border border-black rounded-md p-1 w-[60px]' placeholder='From' type="number" value={price.from}/>
+        <input onChange={minPrice} className='border border-black rounded-md p-1 w-[60px]' placeholder='From' type="number" value={price.from}/>
         To 
-        <input onChange={(event) => setPrice({...price, to: event.target.value})} className='border border-black rounded-md p-1 w-[60px]' placeholder='To' type="number" value={price.to}/>
+        <input onChange={maxPrice} className='border border-black rounded-md p-1 w-[60px]' placeholder='To' type="number" value={price.to}/>
     </div>
     </div>  
     <div className='m-3'>
