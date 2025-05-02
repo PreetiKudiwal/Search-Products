@@ -1,27 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { FaRegHeart, FaSearch } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { RxCross2 } from "react-icons/rx";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Context } from "../../Context/MainContext";
 
 export default function Header() {
-  const [toggle, setToggle] = useState(true);
 
   const { cart, user, setUser } = useContext(Context);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const logout = () => {
     setUser("");
   };
 
-  useEffect(() => {
-    if (!user && location.pathname != "/register") {
-      navigate("/login");
-    }
-  }, [user, location.pathname]);
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-10">
@@ -113,19 +103,11 @@ export default function Header() {
             }
           >
             <TiShoppingCart />
-            {cart.length > 0 && (
+            
               <span className="absolute -top-2 -right-[-10px] bg-gray-800 text-white text-xs px-1.5 py-0.5 rounded-full">
                 {cart.length}
               </span>
-            )}
           </NavLink>
-
-          {/* <NavLink to={"/cart"}>
-            <TiShoppingCart className="text-2xl" />
-            <span className="w-5 text-center rounded-md font-medium text-white bg-green-600 absolute top-0">
-              {cart.length}
-            </span>
-          </NavLink> */}
 
           {!user ? ( //user!"" & undifined & null
             <Link to={"/login"}>

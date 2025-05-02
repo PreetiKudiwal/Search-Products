@@ -119,7 +119,7 @@ function ProductCard({productData}) {
     return (
         <>
         
-            <div className="w-[255px] bg-white shadow-lg rounded-lg p-3  border border-gray-800 hover:scale-[1.04] hover:bg-blue-100 transition duration-300">
+            <div className="w-[255px] h-[426px] bg-white shadow-lg flex flex-col justify-between rounded-lg p-3  border border-gray-800 hover:scale-[1.04] hover:bg-blue-100 transition duration-300">
                 <Link to={`/productDetail/${productData.id}`}>
                 <img 
                     src={productData.thumbnail}
@@ -132,6 +132,7 @@ function ProductCard({productData}) {
                 <p className="text-lg font-bold text-black mt-2">${productData.price}</p>
                 <span className='text-sm text-black'>({(productData.rating).toFixed(2)}/5)</span>
                 </div>
+
                 </Link>
                 <button onClick={addToCart} className="bg-gray-800 w-full mt-2 text-white py-2 px-4 rounded-md hover:bg-gray-900 transition">
                      Add to Cart

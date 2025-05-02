@@ -243,7 +243,7 @@ function ProductOverview({productData}) {
   
   return (
     
-          <div className="w-[255px] bg-white shadow-lg rounded-lg p-3 border border-gray-800 hover:scale-[1.04] hover:bg-blue-100 transition duration-300">
+          <div className="w-[255px] h-[426] bg-white shadow-lg flex flex-col justify-between rounded-lg p-3 border border-gray-800 hover:scale-[1.04] hover:bg-blue-100 transition duration-300">
             <Link to={`/productDetail/${productData.id}`}>
               <img
                 src={productData.thumbnail}

@@ -29,7 +29,7 @@ export default function Filter({slug, rating, setRating, price, setPrice}) {
     const maxPrice = (event) => {
         const endingPrice = event.target.value;
         if (endingPrice > 0) {
-            setPrice({...price, to: event.target.value})
+            setPrice({ })
         }
     }
 

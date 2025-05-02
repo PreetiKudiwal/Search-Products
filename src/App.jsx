@@ -10,7 +10,7 @@ import Cart from './components/Cart'
 import Login from './components/Login'
 import Register from './components/Register'
 import Contact from './Contact'
-
+import ProtectedRoute from './components/ProtectedRoute'
 
 export default function App() {
 
@@ -22,27 +22,51 @@ export default function App() {
         children: [
           {
             path: '',
-            element: <Home />
+            element: (
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            ) 
           },
           {
             path: '/about',
-            element: <About />
+            element: (
+              <ProtectedRoute>
+                <About />
+              </ProtectedRoute>
+            ) 
           },
           {
             path: '/contact',
-            element: <Contact />
+            element: (
+              <ProtectedRoute>
+                <Contact />
+              </ProtectedRoute>
+            ) 
           },
           {
             path: '/shop/:slug?',
-            element: <Shop />
+            element: (
+              <ProtectedRoute>
+                <Shop />
+              </ProtectedRoute>
+            )
           },
           {
             path: '/productDetail/:productId',
-            element: <ProductDetail />
+            element: (
+              <ProtectedRoute>
+                <ProductDetail />
+              </ProtectedRoute>
+            )
           },
           {
             path: '/cart',
-            element: <Cart />
+            element: (
+              <ProtectedRoute> 
+                <Cart />
+              </ProtectedRoute>
+            )
           },
           {
             path: '/login',

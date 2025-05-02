@@ -25,12 +25,23 @@ export default function ProductDetail() {
   }, []);
 
   const addToCart = () => {
-    const { id, title, price, thumbnail, category } = currentProduct;
-    const productDetail = { id, title, price, thumbnail, category, qty: 1 };
-    const finelData = [...cart, productDetail];
-    setCart(finelData);
-    toast.success("Item added to cart!");
-  };
+    const {id, title, price, thumbnail, category} = currentProduct;
+    const productDetail = {id, title, price, thumbnail, category, qty:1}
+     
+    const matchCartData = cart.filter(
+        (cartData, cartIndex) => {
+            return cartData.id == productDetail.id;
+        }
+    )
+
+    if (matchCartData == 0) {
+        const finelData = [...cart, productDetail]
+        setCart(finelData);
+        toast.success('Item added to cart!')
+    }else {
+        toast.error('Item already in cart!')
+    }
+    }
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-[#dfdce6] p-8">
